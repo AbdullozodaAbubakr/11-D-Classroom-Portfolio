@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7fafc;
+  --fg: #0f172a;
+  --card: #ffffffcc;
+  --card-border: #e2e8f0;
+  --accent: #7c3aed;
+  --muted: #64748b;
+  --hero-start: #ede9fe;
+  --hero-end: #e0f2fe;
+}
+
+[data-theme='dark'] {
+  --bg: #0b1220;
+  --fg: #e5e7eb;
+  --card: #101826cc;
+  --card-border: #1f2937;
+  --accent: #a78bfa;
+  --muted: #94a3b8;
+  --hero-start: #1b283f;
+  --hero-end: #122033;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+.container-responsive {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.card-surface {
+  @apply rounded-2xl border backdrop-blur shadow-soft;
+  background-color: var(--card);
+  border-color: var(--card-border);
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 400ms ease, border-color 400ms ease;
+}
+
+.hero-surface {
+  @apply rounded-3xl border shadow-soft;
+  border-color: var(--card-border);
+  background-image: radial-gradient(80% 120% at 100% 0%, var(--hero-start) 0%, transparent 60%), radial-gradient(100% 120% at 0% 100%, var(--hero-end) 0%, transparent 60%);
+  background-color: var(--card);
+  transition: background-color 400ms ease, border-color 400ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-full px-3 py-2 text-sm font-medium border;
+  background-color: var(--card);
+  border-color: var(--card-border);
+}
+
+.btn:hover {
+  filter: brightness(1.02);
+}
