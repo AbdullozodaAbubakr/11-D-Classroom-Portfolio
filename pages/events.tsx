@@ -4,6 +4,7 @@ import { events } from "../data/events"
 import EventCard from "../components/EventCard"
 import ImageLightbox from "../components/ImageLightbox"
 import { motion } from "framer-motion"
+import TextReveal from "../components/TextReveal"
 
 export default function Events() {
   const [open, setOpen] = useState(false)
@@ -26,8 +27,8 @@ export default function Events() {
       </Head>
       <main className="min-h-screen">
         <section className="container-responsive py-6">
-          <motion.h1 className="text-2xl sm:text-3xl font-bold tracking-tight" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>Events</motion.h1>
-          <motion.p className="mt-2 text-sm text-muted" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}>Olympiads, competitions, and showcases.</motion.p>
+          <TextReveal as="h1" className="text-2xl sm:text-3xl font-bold tracking-tight">Events</TextReveal>
+          <TextReveal as="p" className="mt-2 text-sm text-muted" delay={0.05}>Olympiads, competitions, and showcases.</TextReveal>
           <div className="mt-6 grid-auto-fit">
             {events.map((e, i) => (
               <EventCard key={e.id} item={e} index={i} onOpen={(it) => openItem(it.images[0], it.title, it.description)} />

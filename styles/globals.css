@@ -46,11 +46,41 @@ body {
 }
 
 .hero-surface {
-  @apply rounded-3xl border shadow-soft;
+  @apply rounded-3xl border shadow-soft relative overflow-hidden;
   border-color: var(--card-border);
-  background-image: radial-gradient(80% 120% at 100% 0%, var(--hero-start) 0%, transparent 60%), radial-gradient(100% 120% at 0% 100%, var(--hero-end) 0%, transparent 60%);
   background-color: var(--card);
   transition: background-color 400ms ease, border-color 400ms ease;
+}
+
+.hero-surface::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle at 50% 50%, var(--hero-start), transparent 50%),
+              radial-gradient(circle at 0% 0%, var(--hero-end), transparent 50%),
+              radial-gradient(circle at 100% 100%, var(--hero-start), transparent 50%),
+              radial-gradient(circle at 100% 0%, var(--hero-end), transparent 50%),
+              radial-gradient(circle at 0% 100%, var(--hero-start), transparent 50%);
+  background-size: 150% 150%;
+  animation: mesh-gradient 20s ease infinite alternate;
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(40px);
+}
+
+@keyframes mesh-gradient {
+  0% {
+    background-position: 0% 0%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 100% 100%;
+    transform: scale(1.1);
+  }
+  100% {
+    background-position: 0% 0%;
+    transform: scale(1);
+  }
 }
 
 .card-hover:hover {

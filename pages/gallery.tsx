@@ -4,6 +4,7 @@ import { useState } from "react"
 import { gallery } from "../data/gallery"
 import ImageLightbox from "../components/ImageLightbox"
 import { motion } from "framer-motion"
+import TextReveal from "../components/TextReveal"
 
 export default function Gallery() {
   const [open, setOpen] = useState(false)
@@ -26,8 +27,8 @@ export default function Gallery() {
       </Head>
       <main className="min-h-screen">
         <section className="container-responsive py-6">
-          <motion.h1 className="text-2xl sm:text-3xl font-bold tracking-tight" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>Gallery</motion.h1>
-          <motion.p className="mt-2 text-sm text-muted" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}>Highlights and memories.</motion.p>
+          <TextReveal as="h1" className="text-2xl sm:text-3xl font-bold tracking-tight">Gallery</TextReveal>
+          <TextReveal as="p" className="mt-2 text-sm text-muted" delay={0.05}>Highlights and memories.</TextReveal>
           <div className="mt-6 grid-auto-fit">
             {gallery.map((g, idx) => (
               <motion.button
